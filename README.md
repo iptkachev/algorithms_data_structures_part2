@@ -1,2 +1,2 @@
-# algorithms_data_structures_part2
+# Algorithms methods: theory and practise. Data structures
 Stepic MOOC https://stepik.org/course/1547
