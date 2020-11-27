@@ -1,2 +1,5 @@
 # Algorithms methods: theory and practise. Data structures
-Stepic MOOC https://stepik.org/course/1547
+This repository presents solved exercises from course:
+
+1. Basic data structures: code brackets, tree height, emulating network packages
+with stack, max value in window slicing
