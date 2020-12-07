@@ -5,3 +5,4 @@ This repository presents solved exercises from course:
 with stack, max value in window slicing
 2. Priority queues and disjoint sets: building minheap, 
 emulating parallel processing tasks, merging tables, system of variables
+3. Binary search trees: traversals, check property of bst
