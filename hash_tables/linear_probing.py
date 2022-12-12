@@ -8,7 +8,7 @@ class HashTable:
 		while True:
 			if self._hash_table[index] == k:
 				return index
-			index += 1
+			index = (index + 1) % self._size_m
 
 			if index == self._get_hash(k):
 				return None
@@ -42,8 +42,8 @@ class HashTable:
 
 
 if __name__ == "__main__":
-	hash_table = HashTable(7)
-	for k in [33, 77, 708, 49]:
+	hash_table = HashTable(5)
+	for k in [ord(char) for char in "RHCD"]:
 		hash_table.insert(k)
 		print(hash_table._hash_table)
 		print(hash_table.get_index_by_key(k))
