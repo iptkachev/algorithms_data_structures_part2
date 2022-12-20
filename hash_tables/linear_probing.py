@@ -15,7 +15,7 @@ class HashTable:
 				self._hash_table[index] = k
 				return True
 			else:
-				index = (index + 1) % self._size_m
+				index = (index + 1 + self._get_offset_hash(k)) % self._size_m
 
 			if index == self._get_hash(k):
 				self._rehash()
@@ -31,7 +31,7 @@ class HashTable:
 			elif self._hash_table[index] is None:
 				return None
 			else:
-				index = (index + 1) % self._size_m
+				index = (index + 1 + self._get_offset_hash(k)) % self._size_m
 
 			if index == self._get_hash(k):
 				return None
@@ -47,10 +47,14 @@ class HashTable:
 	def _get_hash(self, k: int) -> int:
 		return k % self._size_m
 
+	def _get_offset_hash(self, k: int) -> int:
+		return (k // self._size_m) % (self._size_m - 1)
+
 	def _rehash(self):
 		new_hash_table = HashTable(self._size_m * 2)
 		for k in self._hash_table:
-			new_hash_table.insert(k)
+			if k not in (None, self._DELETED):
+				new_hash_table.insert(k)
 		self._hash_table = new_hash_table._hash_table
 		self._size_m = self._size_m
 
@@ -62,6 +66,7 @@ if __name__ == "__main__":
 		hash_table.insert(k)
 		print(hash_table._hash_table)
 		print(hash_table.get_index_by_key(k))
+
 	hash_table.delete(67)
 	print(hash_table._hash_table)
 	print(hash_table.get_index_by_key(68) is not None)
